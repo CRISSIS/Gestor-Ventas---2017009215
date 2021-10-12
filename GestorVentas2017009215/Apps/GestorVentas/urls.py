@@ -5,5 +5,6 @@ from . import views
 #importamos las vistas para poder asignarlas a una url
 
 urlpatterns = [
-    path('', views.vistaIndex)
+    path('login/', views.vistaLogin),
+    path('register/', views.vistaRegister)
 ]

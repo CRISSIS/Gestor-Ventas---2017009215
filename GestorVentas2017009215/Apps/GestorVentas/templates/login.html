@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %} <!-- cargamos la carpeta static para reconocer css, js y otros -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- #region Referencias a Librerias, Frameworks y otros archivos -->
+    <!-- google font: Nixie One -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nixie+One&display=swap" rel="stylesheet">
+    <!-- Llamada a bundle -->
+    <!-- <script type="text/javascript" src="src/main-vue.js" defer></script>  -->
+    <!-- #endregion Referencias a Librerias, Frameworks y otros archivos -->
+     <title>Gestor de Ventas</title>
+     <link rel="stylesheet" href="{% static 'css/estiloFormularios.css' %}">
+</head>
+<body>
+    <section class="main">
+        <div class="formulario" >
+            <form action="/registrarCurso/" method="POST">{% csrf_token %}
+                <p>Usuario: <input type="text" placeholder="Usuario" maxlength="50" required></p>
+                <br>
+                <p>Contraseña: <input  type="password" placeholder="Contraseña" maxlength="50" required></p>
+                <br>
+            </form>
+            <br>
+            <div class="contenedorBotones">
+                <button type="submit"> Iniciar Sesión </button>
+            </div>
+        </div>
+    </section>
+</body> 
+</html>
