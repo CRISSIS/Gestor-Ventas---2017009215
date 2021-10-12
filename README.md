@@ -12,8 +12,9 @@ Proyecto del Curso "Proyectos de computación aplicada a I.E." cuya finalidad es
 * Motor de BD PostgreSQL
 * HTML, CSS y JS
 
-## Desarrollador 💻
+## Desarrolladores 💻
 
+* **Kevin Estuardo Castro Gómez** - 201801359 
 * **Christoper kevin Ramos Man** - 201709215
 
 ## Catedrático del Curso ✒️
