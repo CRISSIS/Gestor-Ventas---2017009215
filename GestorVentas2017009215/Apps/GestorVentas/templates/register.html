@@ -18,7 +18,9 @@
     <section class="main">
         <div class="formulario" >
             <form action="/registrarCurso/" method="POST">{% csrf_token %}
-                <p>Nombre: <input type="text" placeholder="Nombre" maxlength="50" required></p>
+                <p>Nombres: <input type="text" placeholder="Nombres" maxlength="50" required></p>
+                <br>
+                <p>Apellidos: <input type="text" placeholder="Apellidos" maxlength="50" required></p>
                 <br>
                 <p>Usuario: <input type="text" placeholder="Usuario" maxlength="50" required></p>
                 <br>
