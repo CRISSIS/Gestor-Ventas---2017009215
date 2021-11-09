@@ -17,27 +17,29 @@
 <body>
     <section class="main">
         <div class="formulario" >
-            <form action="/registrarCurso/" method="POST">{% csrf_token %}
-                <p>Nombres: <input type="text" placeholder="Nombres" maxlength="50" required></p>
+            <form action="/registrarUsuarioNuevo/" method="POST">{% csrf_token %}
+                <p>Nombres: <input name="nombresN" type="text" placeholder="Nombres" maxlength="50" required></p>
                 <br>
-                <p>Apellidos: <input type="text" placeholder="Apellidos" maxlength="50" required></p>
+                <p>Apellidos: <input name="apellidosN" type="text" placeholder="Apellidos" maxlength="50" required></p>
                 <br>
-                <p>Usuario: <input type="text" placeholder="Usuario" maxlength="50" required></p>
+                <p>Usuario: <input name="usuarioN" type="text" placeholder="Usuario" maxlength="50" required></p>
                 <br>
-                <p>Correo: <input type="text" placeholder="Correo" maxlength="50" required></p>
+                <p>Correo: <input name="correoN" type="text" placeholder="Correo" maxlength="50" required></p>
                 <br>
-                <p>Edad: <input type="text" placeholder="Edad" maxlength="2" min="1" max="9" required></p>
+                <p>Edad: <input name="edadN" type="text" placeholder="Edad" maxlength="2" min="1" max="9" required></p>
                 <br>
-                <p>Contraseña: <input type="text" placeholder="Contraseña" maxlength="50" required></p>
+                <p>Contraseña: <input name="passN" type="text" placeholder="Contraseña" maxlength="50" required></p>
                 <br>
-                <p>Foto: <input id="file" type="file" accept="image/*" required>
-                <label for="file">Elegir Foto</label></p>
+                <div class="alineadorSelectorFoto">
+                    <p>Foto: <input name="fotoN" id="file" type="file" accept="image/*" required></p>
+                    <label for="file">Elegir Foto</label>
+                    <br>
+                </div>
                 <br>
+                <div class="contenedorBotones">
+                    <button type="submit"> Registrarme </button>
+                </div>
             </form>
-            <br>
-            <div class="contenedorBotones">
-                <button type="submit"> Registrarme </button>
-            </div>
         </div>
     </section>
 </body> 

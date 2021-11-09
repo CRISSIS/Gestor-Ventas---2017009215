@@ -17,16 +17,19 @@
 <body>
     <section class="main">
         <div class="formulario" >
-            <form action="/registrarCurso/" method="POST">{% csrf_token %}
-                <p>Usuario: <input type="text" placeholder="Usuario" maxlength="50" required></p>
+            <form action="/loguearUsuario/" method="POST">{% csrf_token %}
+                <p>Usuario: <input name ="usuarioLog" type="text" placeholder="Usuario" maxlength="50" required></p>
                 <br>
-                <p>Contraseña: <input  type="password" placeholder="Contraseña" maxlength="50" required></p>
+                <p>Contraseña: <input  name ="passLog" type="password" placeholder="Contraseña" maxlength="50" required></p>
                 <br>
+                <div class="contenedorBotones">
+                    <button type="submit"> Iniciar Sesión </button>
+                </div>
             </form>
             <br>
-            <div class="contenedorBotones">
-                <button type="submit"> Iniciar Sesión </button>
-            </div>
+            <form action="/dirigirRegistroUsuario/" method="POST">{% csrf_token %}
+                <button type="submit"> Registrarme </button>
+            </form>
         </div>
     </section>
 </body> 

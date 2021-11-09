@@ -6,5 +6,16 @@ from . import views
 
 urlpatterns = [
     path('login/', views.vistaLogin),
-    path('register/', views.vistaRegister)
+    path('dirigirRegistroUsuario/', views.vistaRegister),
+    #registros de usuario por ruta:
+    path('registrarUsuarioCompleto/', views.registrarUsuarioCompleto),
+    path('registrarUsuarioNuevo/', views.registrarUsuarioNuevo),
+    path('loguearUsuario/', views.loguearUsuario),
+
+    path('comprador/', views.vistaComprador),
+    path('vendedor/', views.vistaVendedor),
+    path('reporte/', views.vistaReporte),
+    path('soyadmin/', views.vistaAdmin),
+
+    path('logout/', views.vistaLogout, name='logout'),
 ]

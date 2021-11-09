@@ -8,7 +8,6 @@ from .models import *
 Agregamos nuestros modelos para poder
 configurarlos en el panel admin
 """
-admin.site.register(Prueba)
-admin.site.register(Roles)
-admin.site.register(Acciones)
-admin.site.register(Bitacoras)
+admin.site.register(Rol)
+admin.site.register(Accion)
+admin.site.register(Usuario)

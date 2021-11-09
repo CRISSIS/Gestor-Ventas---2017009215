@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %} <!-- cargamos la carpeta static para reconocer css, js y otros -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- #region Referencias a Librerias, Frameworks y otros archivos -->
+    <!-- google font: Nixie One -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nixie+One&display=swap" rel="stylesheet">
+    <title>Gestor de Ventas</title>
+    <link rel="stylesheet" href="{% static 'css/estiloDashboard.css' %}">
+    <!-- Llamada a framework Vue.js y archivos JS-->
+    <script type="text/javascript" src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script> 
+    <script type="text/javascript" src="{% static 'js/main-js.js' %}" defer></script> 
+    <!-- #endregion Referencias a Librerias, Frameworks y otros archivos -->
+</head>
+<body>
+    <!-- #region covertor -->
+        <section id="covertor"> 
+            <div class="rellenoCovertor"></div>
+        </section>
+    <!-- #endregion covertor -->
+    <!-- #region Opciones de encabezado -->
+        <header id="encabezado">
+            <h1 class="tituloPrincipal"> Bienvenido(a) Christoper</h1>
+            <section id="barraInformativa">
+                    <h2 class="lectorTiempo" id="visorFechaActual"> </h2>
+                    <h2 class="lectorTiempo" id="visorHoraActual"> </h2>
+                    <a href="{% url 'logout' %}"><span id="controladorSesion" class="icon-switch" alt="Cerrar sesión" title="Cerrar Sesión"></span></a>
+            </section>
+        </header>
+    <!-- #endregion Opciones de encabezado -->
+    <!-- #region DashBoard -->
+    <section id="main">
+        <!-- #region Menu de Opciones -->
+        <section id="menu">
+            <div v-on:click="activarVisorSegmento1" v-bind:class="[estadoVisualizadores.estadoSegmento1 ? estiloActual.activo : estiloActual.inactivo]">
+                <!-- Perfil no se cambia ya que es igual en todos -->
+                <h2 class="titulosMenu">Perfil</h2>
+            </div>
+            <div v-on:click="activarVisorSegmento2" v-bind:class="[estadoVisualizadores.estadoSegmento2 ? estiloActual.activo : estiloActual.inactivo]">
+                <h2 class="titulosMenu">{% block titleSegmento2 %} {% endblock %}</h2>
+            </div>
+            <div v-on:click="activarVisorSegmento3" v-bind:class="[estadoVisualizadores.estadoSegmento3 ? estiloActual.activo : estiloActual.inactivo]">
+                <h2 class="titulosMenu">{% block titleSegmento3 %} {% endblock %}</h2>
+            </div>   
+        </section> 
+         <!-- #endregion Menu de Opciones -->
+        <!-- #region Visores/Subventanas -->
+        <section id="visualizador">
+            <!-- #region Visor Segmento # 1 (Perfil) -->
+            <div v-show= "estadoVisualizadores.estadoSegmento1" class="visores">
+                <div class = "contenedorDinamico">
+                    <div class= "primerSeparador">
+                        <h2 class="titulos">Datos de Usuario</h2>
+                        <img id="imagenPerfil" src="{% static 'images/perfil.jpg' %}" alt="Imagen de perfil"  title="Imagen de Perfil">
+                        <form id="datosPerfil" class="ProyectorDatosPerfil">
+                            <br>
+                            <p>Id: <input type="text" readonly="readonly"></p>
+                            <br>
+                            <p>Usuario: <input type="text" readonly="readonly"></p>
+                            <br>
+                            <p>Privilegio: <input type="text" readonly="readonly"></p>
+                        </form>
+                    </div>
+                    <div class= "segundoSeparador" id="contenedorDatosPersonales">
+                        <br>
+                        <h2 class="titulos">Información Personal</h2>
+                        <br>
+                        <form id="datosPersonales" class="ProyectorDatosPerfil">
+                            <p>Nombres: <input type="text" readonly="readonly" class="editable"></p>
+                            <br>
+                            <p>Apellidos: <input type="text" readonly="readonly" class="editable"></p>
+                            <br>
+                            <p>Correo: <input type="text" readonly="readonly" class="editable"></p>
+                            <br>
+                            <p>Edad: <input type="text" readonly="readonly" class="editable"></p>
+                            <br>
+                            <p>Pass: <input id="inputPass" type="password" readonly="readonly" class="editable"><span id="visorPass" class="icon-eye" alt="Ver Pass" title="Ver Pass"></span></p>
+                            <br>
+                        </form>
+                        <br>
+                        <div class="contenedorBotonAccionador">
+                            <button class="botonActivo" id="botonEdicionPerfil" >Editar Perfil</button>
+                            <button class="botonActivo" id="botonGuardado" disabled >Guardar Datos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion Visor Perfil -->
+            <!-- #region Visor Segmento # 2 -->
+            <div  v-show= "estadoVisualizadores.estadoSegmento2" class="visores">
+                <div class = "contenedorMayor">
+                    {% block contenidoSegmento2 %}
+
+                    {% endblock %}
+                </div>
+            </div>
+            <!-- #endregion Visor Segmento # 2 -->
+            <!-- #region Visor Segmento # 3 -->
+            <div v-show= "estadoVisualizadores.estadoSegmento3" class="visores">
+                <div class = "contenedorMayor">
+                    {% block contenidoSegmento3 %}
+
+                    {% endblock %}
+                 </div>
+            </div>
+            <!-- #endregion Visor Segmento # 3 --> 
+        </section>
+        <!-- #endregion Visores/Subventanas -->
+    </section>
+    <!-- #endregion DashBoard -->
+    <!-- #region Pie de Página -->
+    <footer>
+        <article>
+            <h4>Proyectos de Computación Aplicados a I.E., Proyecto: Gestor de Ventas</h4>
+            <p>201801359 - Kevin Estuardo Castro Gómez </p>
+            <p>201709215 - Christoper kevin Ramos Man</p>
+        </article>
+    </footer>
+    <!-- #endregion Pie de Página -->
+</body> 
+</html>

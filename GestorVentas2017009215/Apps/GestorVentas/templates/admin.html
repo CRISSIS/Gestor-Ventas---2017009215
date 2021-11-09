@@ -1,0 +1,115 @@
+{% extends "dashboard.html" %}
+
+{% block titleSegmento2 %} Bitácora {% endblock %}
+
+{% block titleSegmento3 %} Usuarios {% endblock %}
+
+{% block contenidoSegmento2 %}
+    <br>
+        <h2 class="titulos">Bitácora</h2>
+    <br>
+    <p class="infoJustificada">La sección de bitácora le presenta los registros de acciones hasta la fecha actual y los registros de sesión fallidos o exitosos hasta la fecha actual:
+    </p>
+    <br>
+    <div class="contenedorTabla">
+        <table id = "" class="tabla" >
+            <thead>
+                <tr>
+                    <th>Usuario</th><th>Acción</th><th>Dirección</th><th>Fecha</th><th>Hora</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla" >
+                <!-- <tr  v-for="elemento in controladoresDeHistoriales.listaRutinas"> -->
+                <tr>
+                    <!-- <td>{{elemento.fecha}}</td> -->
+                    <td>---</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <br>
+    <div class="contenedorTabla">
+        <table id = "" class="tabla" >
+            <thead>
+                <tr>
+                    <th>Usuario</th><th>Fecha</th><th>Hora</th><th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla" >
+                <!-- <tr  v-for="elemento in controladoresDeHistoriales.listaRutinas"> -->
+                <tr>
+                    <!-- <td>{{elemento.fecha}}</td> -->
+                    <td>----</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <div class="contenedorBotonAccionador">
+        <button class="botonActivo" id = "botonActualizadorSesiones" >Actualizar</button>
+    </div>
+{% endblock %}
+
+{% block contenidoSegmento3 %}
+    <br>
+    <h2 class="titulos">Usuarios</h2>
+    <br>
+    <p class="infoJustificada">La sección de usuarios le permite crear usuarios y desbloquear los usuarios cuya cuenta fue bloqueada por motivos de seguridad:
+    </p>
+    <br>
+    <div class="contenedorTabla">
+        <table id = "" class="tabla" >
+            <thead>
+                <tr>
+                    <th>Usuario</th><th>Estado</th><th>Bloqueo</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla" >
+                {% for usuario in usuariosActuales %}
+                <tr>
+                    <td>{{usuario.usuario}}</td><td>{{usuario.estado}}</td>
+                    <td><span id="" class="icon-switch-dark" alt="Desbloquear" title="Desbloquear"></span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <div class="contenedorBotonAccionador">
+        <button class="botonActivo" id = "botonActualizadorBitacoras" >Actualizar</button>
+    </div>
+    <div class="formulario" >
+        <form class="ProyectoDatosRegistro" action="/registrarUsuarioCompleto/" method="POST">{% csrf_token %}
+            <p>Nombres: <input name="nombresC" type="text" placeholder="Nombres" maxlength="50" required></p>
+            <br>
+            <p>Apellidos: <input name="apellidosC" type="text" placeholder="Apellidos" maxlength="50" required></p>
+            <br>
+            <p>Usuario: <input name="usuarioC" type="text" placeholder="Usuario" maxlength="50" required></p>
+            <br>
+            <p>Privilegio: 
+                <select name="privilegioC" id="selectorPrivilegio" class="selectorOpcionesMultiples" required>
+                    <option selected>Admin</option>
+                    <option>Vendedor</option>
+                    <option>Reporte</option>
+                </select>
+            </p>
+            <br>
+            <p>Correo: <input name="correoC" type="text" placeholder="Correo" maxlength="50" required></p>
+            <br>
+            <p>Edad: <input name="edadC" type="text" placeholder="Edad" maxlength="2" min="1" max="9" required></p>
+            <br>
+            <p>Contraseña: <input name="passC" type="text" placeholder="Contraseña" maxlength="50" required></p>
+            <br>
+            <div class="alineadorSelectorFoto">
+                <p>Foto: <input name="fotoC" id="file" type="file" accept="image/*" required></p>
+                <label for="file">Elegir Foto</label>
+                <br>
+            </div>
+            <br>
+            <div class="contenedorBotonAccionador">
+                <button class="botonActivo" type="submit"> Registrar </button>
+            </div>
+        </form>   
+    </div>
+{% endblock %}
